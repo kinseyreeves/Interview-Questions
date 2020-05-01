@@ -18,19 +18,33 @@ class ListNode:
         self.next = next
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
-        ret_head = head.next if head.next else head
-        next2 = self.swap(head, head.next)
-        while next2:
-            next2 = self.swap(next2, next2.next)
+        #Only 1 element
+        if not head.next:
+            return head   
+        ret_head = head.next
+        #Only 2 elements
+        if(not ret_head.next):
+            head.next = None
+            ret_head.next = head
+            return ret_head
+        
+        head.next = ret_head.next
+        ret_head.next = head
+
+        prev, curr = self.swap(head, head.next, head.next.next)
+        
+        while curr:
+            prev, curr = self.swap(prev, curr, curr.next)
         return ret_head
 
-    def swap(self, node, next_node):
-        if(next_node):
-            node.next = next_node.next
-            next_node.next = node
-        else:
-            return next_node
-        return node.next
+    def swap(self, prev, curr, next):
+        if(not next):
+            return (None,None)
+        out = next.next
+        prev.next = next
+        next.next = curr
+        curr.next = out
+        return (curr,out)
 
     def print_list(self,head):
         print(head.val)
@@ -39,11 +53,15 @@ class Solution:
             print(head.val)
             head=head.next
 
-c = ListNode(val=3)
-b = ListNode(val=2, next= c)
-a = ListNode(val=1, next =b)
+f = ListNode(val=6, next = None)
+e = ListNode(val=5, next = None)
+d = ListNode(val=4, next = e)
+c = ListNode(val=3, next = d)
+b = ListNode(val=2, next = c)
+a = ListNode(val=1, next = b)
 
 sol = Solution()
-out = sol.swapPairs(a)
+#sol.print_list(a)
 
+out = sol.swapPairs(a)
 sol.print_list(out)
