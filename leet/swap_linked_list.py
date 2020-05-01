@@ -39,6 +39,15 @@ class Solution:
         return ret_head
 
     def swap(self, prev, curr, next):
+        """
+        The prev ptr goes to the next node, next node goes to current,
+        current node goes to next next
+        i.e.
+        prev->curr->next->out
+        prev->next
+        next->curr
+        curr->out
+        """
         if(not next):
             return (None,None)
         out = next.next
