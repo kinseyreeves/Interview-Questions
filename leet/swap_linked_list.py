@@ -18,7 +18,8 @@ class ListNode:
         self.next = next
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
-        #Only 1 element
+        if(not head):
+            return None
         if not head.next:
             return head   
         ret_head = head.next
@@ -32,7 +33,7 @@ class Solution:
         ret_head.next = head
 
         prev, curr = self.swap(head, head.next, head.next.next)
-        
+
         while curr:
             prev, curr = self.swap(prev, curr, curr.next)
         return ret_head
