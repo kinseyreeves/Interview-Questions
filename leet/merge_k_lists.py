@@ -6,6 +6,9 @@ class ListNode:
 
 
 class Solution:
+    """
+    Merges K linked lists together
+    """
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         
         smallest = self.get_smallest(lists)
