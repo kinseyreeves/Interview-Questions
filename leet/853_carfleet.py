@@ -34,12 +34,9 @@ class Solution:
             for i in range(1,len(positions_ranked)):
                 if(positions_ranked[i][0] > positions_ranked[i-1][0]):
                     positions_ranked[i-1][0] = positions_ranked[i][0]
-            
-            print(positions_ranked)
         
             #current cars at target 
             curr=len([x[0] for x in positions_ranked if x[0] >= target])
-            print(curr)
             #If we got new cars at the target, a bunch has arrived, add to total
             if(curr > prev):
                 total += 1
