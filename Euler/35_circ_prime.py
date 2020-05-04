@@ -1,16 +1,17 @@
-import copy
 import collections
+import copy
 
 n = 20
-all_vals = [x for x in range(1,n)]
+all_vals = [x for x in range(1, n)]
 
-for i in range(1,len(all_vals)-1):
+for i in range(1, len(all_vals) - 1):
     if all_vals[i] != -1:
-        for j in range(i+all_vals[i], n-1, all_vals[i]):
+        for j in range(i + all_vals[i], n - 1, all_vals[i]):
             all_vals[j] = -1
-        #print(all_vals)
+        # print(all_vals)
 
 primes = set([x for x in all_vals if x > 0])
+
 
 def rotations(num):
     out = []
@@ -20,7 +21,5 @@ def rotations(num):
         a.rotate()
     return out
 
-    
 
 print(rotations(1234))
-    

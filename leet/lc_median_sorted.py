@@ -7,32 +7,34 @@ You may assume nums1 and nums2 cannot be both empty.
 
 """
 
+
 def arr_merge(a, b):
     out = []
 
     i = 0
     j = 0
     while i < len(a) and j < len(b):
-        if(a[i] < b[j]):
+        if (a[i] < b[j]):
             out.append(a[i])
-            i+=1
+            i += 1
         else:
             out.append(b[j])
-            j+=1
+            j += 1
     if i < len(a):
-        out+=a[i:]
+        out += a[i:]
     elif j < len(b):
-        out+=b[j:]
+        out += b[j:]
     return out
 
+
 def get_med(arr):
-    if(len(arr) %2 == 0):
-        val = (arr[int(len(arr)/2)-1] + arr[int(len(arr)/2)]) / 2
+    if (len(arr) % 2 == 0):
+        val = (arr[int(len(arr) / 2) - 1] + arr[int(len(arr) / 2)]) / 2
     else:
         val = arr[int(len(arr) / 2)]
 
     return val
 
 
-print(get_med([1,2,3,4,5]))
-print(arr_merge([1], [1,5,9,10,11]))
+print(get_med([1, 2, 3, 4, 5]))
+print(arr_merge([1], [1, 5, 9, 10, 11]))

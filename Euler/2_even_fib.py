@@ -6,12 +6,12 @@ curr = 0
 next1 = 1
 total = 0
 while True:
-    next2 = next1+curr
+    next2 = next1 + curr
     curr = next1
     next1 = next2
-    if(curr%2==0):
-        total+=curr
-    if(curr > TERMINAL):
+    if (curr % 2 == 0):
+        total += curr
+    if (curr > TERMINAL):
         print(curr)
         break
 
