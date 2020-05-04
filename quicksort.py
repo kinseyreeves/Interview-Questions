@@ -1,3 +1,7 @@
+"""
+Quicksort implementation
+"""
+
 a = [12, 3, 2, 4, 4, 22, 34]
 
 

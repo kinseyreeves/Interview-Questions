@@ -15,7 +15,6 @@ def get_subtree(tree, idx, depth, t):
         t = t + [tree[depth][idx]] + get_subtree(tree, idx*2, depth+1, t) + get_subtree(tree, idx*2+1, depth+1, t)
     return t
 
-
 def all_same(lst):
     return all(x==lst[0] for x in lst)
 
