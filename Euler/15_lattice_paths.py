@@ -15,9 +15,6 @@ def grid_search(n):
     print(grid)
     print(grid[0][0])
 
-
-    
-
 grid_search(20)
 
     
