@@ -8,27 +8,28 @@ Example:
 Given 1->2->3->4, you should return the list as 2->1->4->3.
 
 """
-import typing
 
 
-#Definition for singly-linked list.
+# Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
 class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
-        if(not head):
+        if (not head):
             return None
         if not head.next:
-            return head   
+            return head
         ret_head = head.next
-        #Only 2 elements
-        if(not ret_head.next):
+        # Only 2 elements
+        if (not ret_head.next):
             head.next = None
             ret_head.next = head
             return ret_head
-        
+
         head.next = ret_head.next
         ret_head.next = head
 
@@ -48,30 +49,30 @@ class Solution:
         next->curr
         curr->out
         """
-        if(not next):
-            return (None,None)
+        if (not next):
+            return (None, None)
         out = next.next
         prev.next = next
         next.next = curr
         curr.next = out
-        return (curr,out)
+        return (curr, out)
 
-    def print_list(self,head):
+    def print_list(self, head):
         print(head.val)
         head = head.next
-        while(head):
+        while (head):
             print(head.val)
-            head=head.next
+            head = head.next
 
-f = ListNode(val=6, next = None)
-e = ListNode(val=5, next = None)
-d = ListNode(val=4, next = e)
-c = ListNode(val=3, next = d)
-b = ListNode(val=2, next = c)
-a = ListNode(val=1, next = b)
+f = ListNode(val=6, next=None)
+e = ListNode(val=5, next=None)
+d = ListNode(val=4, next=e)
+c = ListNode(val=3, next=d)
+b = ListNode(val=2, next=c)
+a = ListNode(val=1, next=b)
 
 sol = Solution()
-#sol.print_list(a)
+# sol.print_list(a)
 
 out = sol.swapPairs(a)
 sol.print_list(out)

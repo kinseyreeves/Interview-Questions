@@ -1,3 +1,0 @@
-"""
-tree in dictionary python
-"""

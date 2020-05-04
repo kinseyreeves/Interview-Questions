@@ -13,39 +13,39 @@ If a car catches up to a car fleet right at the destination point, it will still
 """
 from typing import *
 
+
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        positions_ranked = sorted([[position[x],x] for x in range(0, len(position))])[::-1]
+        positions_ranked = sorted([[position[x], x] for x in range(0, len(position))])[::-1]
 
         print(positions_ranked)
         total = 0
         prev = 0
 
         while any(x[0] < target for x in positions_ranked):
-            
+
             # we want to move from the first car backwards
-            for i in range(len(positions_ranked)-1,-1,-1):
-                
+            for i in range(len(positions_ranked) - 1, -1, -1):
                 idx = positions_ranked[i][1]
-                #add the speed the position
-                positions_ranked[i][0]+=speed[idx]
-            
-            #Don't let cars overtake
-            for i in range(1,len(positions_ranked)):
-                if(positions_ranked[i][0] > positions_ranked[i-1][0]):
-                    positions_ranked[i-1][0] = positions_ranked[i][0]
-        
-            #current cars at target 
-            curr=len([x[0] for x in positions_ranked if x[0] >= target])
-            #If we got new cars at the target, a bunch has arrived, add to total
-            if(curr > prev):
+                # add the speed the position
+                positions_ranked[i][0] += speed[idx]
+
+            # Don't let cars overtake
+            for i in range(1, len(positions_ranked)):
+                if (positions_ranked[i][0] > positions_ranked[i - 1][0]):
+                    positions_ranked[i - 1][0] = positions_ranked[i][0]
+
+            # current cars at target
+            curr = len([x[0] for x in positions_ranked if x[0] >= target])
+            # If we got new cars at the target, a bunch has arrived, add to total
+            if (curr > prev):
                 total += 1
-            
+
             prev = curr
 
         return total
 
+
 a = Solution()
 
-print(a.carFleet(12, [10,8,0,5,3], [2,4,1,1,3]))
-
+print(a.carFleet(12, [10, 8, 0, 5, 3], [2, 4, 1, 1, 3]))
